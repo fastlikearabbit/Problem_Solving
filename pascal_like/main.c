@@ -44,12 +44,6 @@ void print(int lines, int table[][lines + 1]) {
 
 }
 
-
-//int areArraysEqual(int a[], int b[], int size) {
-//    for (int i = 0; i < )
-//}
-
-
 void bkt(int array[], int visited[], int size, int current_line, int nr_lines, int result[][nr_lines + 1]) {
     if (current_line == nr_lines + 1)
         return;
@@ -59,45 +53,19 @@ void bkt(int array[], int visited[], int size, int current_line, int nr_lines, i
         if (visited[i]) continue;
         
         result[current_line][0] = array[i];
-       // printf("current_line : %i, first chosen : %i\n", current_line, result[current_line][0]);
         visited[i] = 1;
         
         // fill in the entire current line
         for(int j = 1; j <= current_line; j++) {
             result[current_line][j] = result[current_line - 1][j - 1] - result[current_line][j - 1];
-          //  printf("Line : %i, Element nr: %i is %i\n", current_line, j, result[current_line][j]);
         }
-        
-//        if (current_line == 2)
-//            printf("second : %i\n", result[current_line][1]);
         
     
         int areEqual = 1;
         
         int marked_as_visited[size];
         int idx = 0;
-        
-//        int line[current_line + 1];
-        //
-        //        for(int c = 1; c <= current_line; c++)
-        //            line[c] = result[current_line][c];
-        //
-        //        quick_sort(line, 1, current_line);
-        //
-        //        for(int c = 1; c <= current_line; c++)
-        //            if (line[c] != array[c])
-        //                continue;
-        
-        // [5, 4, 4]
-        // [17, 9, 8, 5, 4, 3, 3, 2, 1, 1]
-        
-//        if (current_line == 3) {
-//            printf("Visited before : \n");
-//            for(int i = 0; i < size; i++)
-//                printf("%i ", visited[i]);
-//            printf("\n");
-//
-//        }
+
         for (int b = 1; b <= current_line; b++) {
             int isPresent = 0;
             for (int a = 1; a < size; a++) {
@@ -115,13 +83,7 @@ void bkt(int array[], int visited[], int size, int current_line, int nr_lines, i
                 areEqual = 0;
             }
         }
-//        if (current_line == 3) {
-//            printf("\n");
-//            for(int i = 0; i < size; i++)
-//                printf("%i ", visited[i]);
-//            printf("\n Are equal : %i \n", areEqual);
-//
-//        }
+
         if (!areEqual) {
             for (int u = 0; u < idx; u++) {
                 visited[marked_as_visited[u]] = 0;
